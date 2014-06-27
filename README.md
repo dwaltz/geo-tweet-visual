@@ -3,7 +3,7 @@ Geo Tweet Visualization
 
 A geospatial representation of tweet data collected from the twitter fire hose api.
 
-[Check it out](www.google.com)!
+[Check it out](http://dwaltz.github.io/geo-tweet-visual/)!
 
 For best visual results view using Chrome.
 
