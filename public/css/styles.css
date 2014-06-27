@@ -18,22 +18,22 @@ html, body {
 }
 
 .canvas {
-	background-color: #000000;
+	background-color: #292f33;
 	border-radius: 4px;
 }
 
 .geo-globe {
-	fill: #fefffe;
+	fill: #f5f8fa;
 }
 
 .stroke {
 	fill: none;
-	stroke: #000;
+	stroke: #292f33;
 	stroke-width: 3px;
 }
 
 .fill {
-	fill: #fff;
+	fill: #f5f8fa;
 }
 
 .graticule {
@@ -44,7 +44,7 @@ html, body {
 }
 
 .land {
-	fill: #364761;
+	fill: #66757f;
 }
 
 .boundary {
@@ -60,13 +60,13 @@ html, body {
 
 .user-pulse {
 	fill: none;
-	stroke: #009DDC;
+	stroke: #55ACEE;
 	z-index: 99;
 }
 
 .user-text {
-	font-size: 18px;
-	line-height: 30px;
+	font-size: 30px;
+	line-height: 40px;
 	color: #ffffff;
 }
 
@@ -74,17 +74,17 @@ html, body {
 	top: 10px;
 	left: 10px;
 	position: absolute;
-	background-color: #009DDC;
+	background-color: #55ACEE;
 	border-radius: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
-	max-width: 540px;
+	max-width: 90%;
 	display:none;
 }
 
 .loader {
 	position: absolute;
-	color: #009DDC;
+	color: #55ACEE;
 	z-index: 100;
 	left: 470px;
 	top: 210px;
@@ -110,8 +110,8 @@ html, body {
 }
 
 .user-name {
-	color: #FCB53E;
-	font-size: 20px;
+	color: #292f33;
+	font-size: 32px;
 }
 
 .place {
@@ -121,9 +121,9 @@ html, body {
 #text-location {
 	position: absolute;
 	z-index: 100;
-	top: 170px;
-	left: 300px;
-	color: #959595;
+	top: 410px;
+	left: 760px;
+	color: #292f33;
 }
 
 .text-configuration {
