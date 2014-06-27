@@ -211,6 +211,7 @@ define(function(require){
 	function makeDataRequest(){
 		$.ajax({
 			//url: 'http://geo-tweet-visual-middleware.herokuapp.com/tweets',
+			method: 'GET',
 			url: window.location.protocol + '//geo-tweet-visual-middleware.herokuapp.com/tweets',
 			contentType: 'application/json',
 			success: function(data){
