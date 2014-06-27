@@ -1,0 +1,136 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+#twitter-tour {
+	position: absolute;
+	top: 4px;
+	left: 1px;
+	right: 1px;
+	bottom: 5px;
+}
+
+.twitter-tour-canvas {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.canvas {
+	background-color: #000000;
+	border-radius: 4px;
+}
+
+.geo-globe {
+	fill: #fefffe;
+}
+
+.stroke {
+	fill: none;
+	stroke: #000;
+	stroke-width: 3px;
+}
+
+.fill {
+	fill: #fff;
+}
+
+.graticule {
+	fill: none;
+	stroke: #777;
+	stroke-width: .5px;
+	stroke-opacity: .5;
+}
+
+.land {
+	fill: #364761;
+}
+
+.boundary {
+	fill: none;
+	stroke: #fff;
+	stroke-width: .5px;
+}
+
+.user-ping {
+	overflow: hidden;
+	z-index: 100;
+}
+
+.user-pulse {
+	fill: none;
+	stroke: #009DDC;
+	z-index: 99;
+}
+
+.user-text {
+	font-size: 18px;
+	line-height: 30px;
+	color: #ffffff;
+}
+
+#text-section {
+	top: 10px;
+	left: 10px;
+	position: absolute;
+	background-color: #009DDC;
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	max-width: 540px;
+	display:none;
+}
+
+.loader {
+	position: absolute;
+	color: #009DDC;
+	z-index: 100;
+	left: 470px;
+	top: 210px;
+}
+
+.cover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	border-radius: 4px;
+}
+
+.blanket {
+	top: 0;
+	opacity: .8;
+	background-color: #666666;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+}
+
+.user-name {
+	color: #FCB53E;
+	font-size: 20px;
+}
+
+.place {
+	color: #F8DE6E;
+}
+
+#text-location {
+	position: absolute;
+	z-index: 100;
+	top: 170px;
+	left: 300px;
+	color: #959595;
+}
+
+.text-configuration {
+	position: absolute;
+	z-index: 100;
+	bottom: 20px;
+	left: 20px;
+	color: #7AB800;
+	font-size: 18px;
+}
