@@ -104,13 +104,20 @@ define(function(require){
 	}
 
 	function translateGlobe ( newCord ){
+		var x = (curCoordinates[1] - newCord[1]) * Math.cos((curCoordinates[0] + newCord[0])/2);
+		var y = (curCoordinates[0] - newCord[0]);
+		var scaleFactor = Math.sqrt(x*x + y*y)/150;
+		curCoordinates = newCord;
+
 		d3.transition()
 			.duration(2000)
 			.tween("rotate", function() {
 				var p = newCord,
 					r = d3.interpolate(projection.rotate(), [p[0], p[1]]);
 				return function(t) {
-					projection.rotate(r(t));
+					projection.rotate(r(t))
+						.scale(360 - quadratic(t)*100*scaleFactor);
+					backgroundCircle.attr('r', projection.scale());
 					svg.selectAll("path").attr("d", path);
 				};
 			})
@@ -120,6 +127,10 @@ define(function(require){
 				pulseCircle.attr('opacity',.6);
 				userCircle.attr('opacity',1);
 			});
+	}
+
+	function quadratic(x){
+		return ((((x-0.5)*(x- 0.5))/-2.5)+.1)*10
 	}
 
 	function animateGlobe( newCord ){

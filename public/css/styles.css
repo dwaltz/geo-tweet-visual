@@ -121,8 +121,8 @@ html, body {
 #text-location {
 	position: absolute;
 	z-index: 100;
-	top: 410px;
-	left: 760px;
+	top:53%;
+	left: 51%;
 	color: #292f33;
 }
 
