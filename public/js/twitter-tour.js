@@ -23,7 +23,7 @@ define(function(require){
 
 	(function createProjection(){
 		projection = d3.geo.orthographic()
-			.scale(360)
+			.scale(480)
 			.translate([width / 2, height / 2])
 			.clipAngle(90);
 
@@ -106,7 +106,7 @@ define(function(require){
 	function translateGlobe ( newCord ){
 		var x = (curCoordinates[1] - newCord[1]) * Math.cos((curCoordinates[0] + newCord[0])/2);
 		var y = (curCoordinates[0] - newCord[0]);
-		var scaleFactor = Math.sqrt(x*x + y*y)/150;
+		var scaleFactor = Math.sqrt(x*x + y*y)/110;
 		curCoordinates = newCord;
 
 		d3.transition()
@@ -116,7 +116,7 @@ define(function(require){
 					r = d3.interpolate(projection.rotate(), [p[0], p[1]]);
 				return function(t) {
 					projection.rotate(r(t))
-						.scale(360 - quadratic(t)*100*scaleFactor);
+						.scale(480 - quadratic(t)*100*scaleFactor);
 					backgroundCircle.attr('r', projection.scale());
 					svg.selectAll("path").attr("d", path);
 				};
@@ -133,6 +133,7 @@ define(function(require){
 		return ((((x-0.5)*(x- 0.5))/-2.5)+.1)*10
 	}
 
+	//old method used for transitions
 	function animateGlobe( newCord ){
 		var totalxdif, totalydif, xit, yit, curx, cury, difx, dify, scale, scaleCorrection, dilation;
 		var count = 1;
