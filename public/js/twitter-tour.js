@@ -101,6 +101,10 @@ define(function(require){
 		userCircle.style('fill', 'url(#user-image-ref)');
 		translateGlobe([data.geo.coordinates[1] * (-1), data.geo.coordinates[0] * (-1)]);
 		//animateGlobe([data.geo.coordinates[1] * (-1), data.geo.coordinates[0] * (-1)]);
+
+		if( tweetStats.length && (index > tweetStats.length - 2) ) {
+			makeDataRequest();
+		}
 	}
 
 	function translateGlobe ( newCord ){
@@ -240,7 +244,7 @@ define(function(require){
 
 			}
 		});
-		setTimeout(makeDataRequest,20000);
+		//setTimeout(makeDataRequest,20000);
 	}
 
 	makeDataRequest();

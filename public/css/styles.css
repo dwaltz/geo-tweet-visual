@@ -65,8 +65,8 @@ html, body {
 }
 
 .user-text {
-	font-size: 30px;
-	line-height: 40px;
+	font-size: 38px;
+	line-height: 55px;
 	color: #ffffff;
 }
 
@@ -111,7 +111,7 @@ html, body {
 
 .user-name {
 	color: #292f33;
-	font-size: 32px;
+	font-size: 45px;
 }
 
 .place {
