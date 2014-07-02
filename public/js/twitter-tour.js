@@ -7,16 +7,17 @@ define(function(require){
 	require('jquery');
 
 
-	var width = $('.twitter-tour-canvas').width();
-	var height = $('.twitter-tour-canvas').height();
+	var width           = $('.twitter-tour-canvas').width();
+	var height          = $('.twitter-tour-canvas').height();
 
-	var $text = $('.user-text');
-	var $textSection = $('#text-section');
-	var $cover = $('.cover');
-	var $textLoc = $('#text-location span');
-	var tweetStats = [];
-	var curCoordinates = [0,0];
-	var curIndex = 0;
+	var $text           = $('.user-text');
+	var $textSection    = $('#text-section');
+	var $img            = $('#media-image');
+	var $cover          = $('.cover');
+	var $textLoc        = $('#text-location span');
+	var tweetStats      = [];
+	var curCoordinates  = [0,0];
+	var curIndex        = 0;
 	var startedLoop;
 	var projection, path, λ, φ, svg, backgroundCircle,
 		userCircle,userItems,userImage, pulseCircle;
@@ -99,7 +100,25 @@ define(function(require){
 		$textLoc.html(data.place ? data.place.full_name : '');
 		userImage.attr('xlink:href',data.user.profile_image_url_https);
 		userCircle.style('fill', 'url(#user-image-ref)');
-		translateGlobe([data.geo.coordinates[1] * (-1), data.geo.coordinates[0] * (-1)]);
+		if( data.entities && data.entities.media && data.entities.media.length ){
+			console.log('we are in');
+			if( window.location.protocol == 'http:'){
+				$img.attr('src',data.entities.media[0]['media_url']);
+			} else {
+				$img.attr('src',data.entities.media[0]['media_url_https']);
+				//data.entities.media[0]['media_url_https']
+			}
+		}
+
+		translateGlobe([data.geo.coordinates[1] * (-1), data.geo.coordinates[0] * (-1)], function(){
+			$textSection.fadeIn();
+			$textLoc.fadeIn(function(){
+				if( data.entities && data.entities.media && data.entities.media.length ) $img.show();
+			});
+			pulseCircle.attr('opacity',.6);
+			userCircle.attr('opacity',1);
+		});
+
 		//animateGlobe([data.geo.coordinates[1] * (-1), data.geo.coordinates[0] * (-1)]);
 
 		if( tweetStats.length && (index > tweetStats.length - 2) ) {
@@ -107,7 +126,7 @@ define(function(require){
 		}
 	}
 
-	function translateGlobe ( newCord ){
+	function translateGlobe ( newCord, callback ){
 		var x = (curCoordinates[1] - newCord[1]) * Math.cos((curCoordinates[0] + newCord[0])/2);
 		var y = (curCoordinates[0] - newCord[0]);
 		var scaleFactor = Math.sqrt(x*x + y*y)/110;
@@ -125,12 +144,7 @@ define(function(require){
 					svg.selectAll("path").attr("d", path);
 				};
 			})
-			.each("end", function(){
-				$textSection.fadeIn();
-				$textLoc.fadeIn();
-				pulseCircle.attr('opacity',.6);
-				userCircle.attr('opacity',1);
-			});
+			.each("end", callback);
 	}
 
 	function quadratic(x){
@@ -208,6 +222,7 @@ define(function(require){
 		setTimeout(function(){
 			if( tweetStats.length ){
 				$cover.hide();
+				$img.hide();
 				$textSection.fadeOut(800);
 				$textLoc.fadeOut(800);
 				pulseCircle

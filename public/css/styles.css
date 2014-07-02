@@ -134,3 +134,13 @@ html, body {
 	color: #7AB800;
 	font-size: 18px;
 }
+
+#media-image {
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+	width: 20%;
+	height: 40%;
+	border: 3px solid #55ACEE;
+	border-radius: 3px;
+}
